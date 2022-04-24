@@ -1,0 +1,49 @@
+$border1: 1px solid;
+
+.outer{
+    border: $border1;
+    margin: 50px auto;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    border: $border1;
+    margin: 30px;
+    width: 80%;
+    height: 50px;
+}
+
+.choiceWrapper{
+    border: $border1;
+    margin: 5px;
+    width: 80%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+
+.choice{
+    border: $border1;
+    margin: 20px;
+    width: 500px;
+    height: 85%;
+}
+
+.choiceEven{
+    border: $border1;
+    margin: 20px;
+    width: 400px;
+    height: 75%;
+}
+
+.result{
+    border: $border1;
+    margin: 50px auto;
+    width: 800px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
