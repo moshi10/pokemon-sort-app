@@ -26,7 +26,7 @@ $border1: 1px solid;
 }
 
 .choice{
-    border: $border1;
+
     margin: 20px;
     width: 500px;
     height: 85%;
@@ -43,7 +43,7 @@ $border1: 1px solid;
     border: $border1;
     margin: 50px auto;
     width: 800px;
-    height: 300px;
+    // height: 300px;
     display: flex;
     align-items: center;
 }

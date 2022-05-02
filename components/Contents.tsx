@@ -1,60 +1,61 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { PokemonItem } from "../types/pokemonItem";
+import { CardComponent } from "./CardComponent";
 import contentsStyle from "./contents.module.scss"
+import wrapperStyle from "./wrapper.module.scss"
 
-type Character = {
-    id: number;
-    name: string;
-    img: string;
-    sort: number;
-};
-
-const characters: Character[] = [
-    {
-        id: 1,
-        name: "taro",
-        img: "taro.png",
-        sort: 0
-    },
-    {
-        id: 2,
-        name: "taro2",
-        img: "taro2.png",
-        sort: 0,
-    },
-    {
-        id: 3,
-        name: "taro3",
-        img: "taro3.png",
-        sort: 0
-    }
-]
+const getPokemon = async (id:number):Promise<PokemonItem>=> {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+}
 
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
 }
 
 export const Contents: React.FC = () => {
-    const [leftCharacter, setLeftCharacter] = useState<Character>()
-    const [rightCharacter, setRightCharacter] = useState<Character>()
+    const [PokemonDataArray, setPokemonDataArray] = useState<PokemonItem[]>([])
+    const [LeftPokemonItem, setLeftPokemonItem] = useState<PokemonItem>()
+    const [RightPokemonItem,setRightPokemonItem] = useState<PokemonItem>()
     useEffect(() => {
-        const leftId = getRandomInt(3) + 1
-        const rightId = getRandomInt(3) + 1
-        setLeftCharacter(characters.find(value => value.id === leftId))
-        setRightCharacter(characters.find(value => value.id === rightId))
+        // メソッドチェーン
+        // fetch('https://pokeapi.co/api/v2/pokemon/1', { method: 'GET' })
+        // .then((res) => res.json())
+        // .then((result: PokemonItem) => {
+        //     console.log(result.name);
+        // });
+
+        const getPokemons = async () => {
+            const PokemonTempArray:PokemonItem[] = []
+            for (let i=1; i<=151; i++){
+                const pokemonData = await getPokemon(i);
+                PokemonTempArray.push(pokemonData)
+            }
+            setPokemonDataArray(PokemonTempArray)
+            console.log(PokemonTempArray);
+            const leftId = getRandomInt(151) + 1
+            const LeftTempPokemonItem = PokemonTempArray.find(value => value.id === leftId)
+            const rightId = getRandomInt(151) + 1
+            const RightTempPokemonItem = PokemonTempArray.find(value => value.id === rightId)
+            setLeftPokemonItem(LeftTempPokemonItem)
+            setRightPokemonItem(RightTempPokemonItem)
+        }
+        getPokemons()
+
     }, [])
-    const handleLeftChoice = () => {
-        const leftId = getRandomInt(3) + 1
-        const rightId = getRandomInt(3) + 1
-        setLeftCharacter(characters.find(value => value.id === leftId))
-        setRightCharacter(characters.find(value => value.id === rightId))
-    }
-    const handleEvenChoice = () => {
 
+    const handleChoice = () => {
+        const leftId = getRandomInt(151) + 1
+        const LeftTempPokemonItem = PokemonDataArray.find(value => value.id === leftId)
+        const rightId = getRandomInt(151) + 1
+        const RightTempPokemonItem = PokemonDataArray.find(value => value.id === rightId)
+        setLeftPokemonItem(LeftTempPokemonItem)
+        setRightPokemonItem(RightTempPokemonItem)
     }
-    const handleRightChoice = () => {
 
-    }
     return (
         <>
             <div className={contentsStyle.outer}>
@@ -62,32 +63,34 @@ export const Contents: React.FC = () => {
 
                 </div>
                 <div className={contentsStyle.choiceWrapper}>
-                    <div className={contentsStyle.choice} onClick={handleLeftChoice} >
-                        {leftCharacter?.name}
+                    <div className={contentsStyle.choice} onClick={handleChoice} >
+                        { LeftPokemonItem ? <CardComponent currentPokemonItem={LeftPokemonItem}/> : <></> }
                     </div>
-                    <div className={contentsStyle.choiceEven} onClick={handleEvenChoice}></div>
-                    <div className={contentsStyle.choice} onClick={handleRightChoice} >
-                        {rightCharacter?.name}
+                    <div className={contentsStyle.choiceEven} ></div>
+                    <div className={contentsStyle.choice} onClick={handleChoice}>
+                        { RightPokemonItem ? <CardComponent currentPokemonItem={RightPokemonItem}/> : <></> }
                     </div>
                 </div>
             </div>
+
             <div className={contentsStyle.result}>
                 <table>
                     <thead>
                         <tr>
-                            <th>順位</th>
+                            <th>id</th>
                             <th>名前</th>
-                            <th>Pt</th>
+                            <th>gazo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {characters.map(value => (
-                            <tr>
-                                <td>{value.sort}</td>
+                        {PokemonDataArray.map((value,index)=> (
+                            <tr key={index}>
+                                <td>{value.id}</td>
                                 <td>{value.name}</td>
-                                <td>{value.sort}</td>
+                                <td><img src={value.sprites.front_default} alt="" /></td>
                             </tr>)
-                        )}
+                        )
+                    }
                     </tbody>
                 </table>
             </div>
