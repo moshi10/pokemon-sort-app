@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { useEffect } from "react";
 import { PokemonItem } from "../types/pokemonItem";
 import cardComponentsStyle from "./cardComponent.module.scss"
 
+// タイプ別の色を定義
 const colors = [
     {type:'fire', color:'#FDDFDF'},
     {type:'grass', color:'#DEFDE0'},
@@ -34,47 +33,26 @@ function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
 }
 
+// 1 ここで受け取るPropの型を定義するんだ？
 interface CardComponentsProps {
     currentPokemonItem: PokemonItem
 }
 
-export const CardComponent: React.FC<CardComponentsProps> = (Props) => {
-    // useState 状態変数　状態変数を更新する関数
-    // const [PokemonDataArray, setPokemonDataArray] = useState<PokemonItem[]>([])
-    const [RightPokemonItem, setRightPokemonItem] = useState<PokemonItem>()
-
-    const type = Props.currentPokemonItem.types[0].type.name
-    const colorObject = colors.find(value => value.type === type)
-
-    // reactのレンダリング後に実行する関数
-    // useEffect(() => {
-    //     // 
-    //     const getPokemons = async () => {
-    //         const PokemonTempArray:PokemonItem[] = []
-    //         for (let i=1; i<=151; i++){
-    //             const pokemonData = await getPokemon(i);
-    //             PokemonTempArray.push(pokemonData)
-    //         }
-    //         setPokemonDataArray(PokemonTempArray)
-    //         console.log(PokemonTempArray);
-    //     }
-    //     getPokemons()
-
-    // }, []) 
-
-    // const handleRightChoice = () => {
-    //     const rightId = getRandomInt(151) + 1
-    //     const RightTempPokemonItem = Props.pokemonDataArray.find(value => value.id === rightId)
-    //     setRightPokemonItem(RightTempPokemonItem)
-    // }
+// 3 関数の名前にジェネリクスの中に定義したやつ書いてる
+// PropsをPに書き換えてみた！
+export const CardComponent: React.FC<CardComponentsProps> = (P) => {
+    // 今のポケモンのタイプ
+    const type = P.currentPokemonItem.types[0].type.name
+    // colorの中からtypeを選んで↑のtypeと比べて取り出す
+    const colorObject = colors.find(v => v.type === type)
 
     return (
         <div className={cardComponentsStyle.cardContainer} style={{ backgroundColor: colorObject?.color }}>
-            <p>{Props.currentPokemonItem.id}</p>
+            <p>{P.currentPokemonItem.id}</p>
             <div className={cardComponentsStyle.imgContainer}>
-                {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${Props.currentPokemonItem.id}.png`} alt="" />}
+                {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${P.currentPokemonItem.id}.png`} alt="" />}
             </div>
-            <p>{Props.currentPokemonItem.name}</p>
+            <p>{P.currentPokemonItem.name}</p>
         </div>
 
 

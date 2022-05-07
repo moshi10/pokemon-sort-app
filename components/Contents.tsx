@@ -5,6 +5,7 @@ import { CardComponent } from "./CardComponent";
 import contentsStyle from "./contents.module.scss"
 import wrapperStyle from "./wrapper.module.scss"
 
+// 
 const getPokemon = async (id:number):Promise<PokemonItem>=> {
     const url = `https://pokeapi.co/api/v2/pokemon/${id}`
     const res = await fetch(url);
@@ -21,13 +22,6 @@ export const Contents: React.FC = () => {
     const [LeftPokemonItem, setLeftPokemonItem] = useState<PokemonItem>()
     const [RightPokemonItem,setRightPokemonItem] = useState<PokemonItem>()
     useEffect(() => {
-        // メソッドチェーン
-        // fetch('https://pokeapi.co/api/v2/pokemon/1', { method: 'GET' })
-        // .then((res) => res.json())
-        // .then((result: PokemonItem) => {
-        //     console.log(result.name);
-        // });
-
         const getPokemons = async () => {
             const PokemonTempArray:PokemonItem[] = []
             for (let i=1; i<=151; i++){
@@ -64,9 +58,12 @@ export const Contents: React.FC = () => {
                 </div>
                 <div className={contentsStyle.choiceWrapper}>
                     <div className={contentsStyle.choice} onClick={handleChoice} >
+                        {/* 2 CardComponentにcurrentPokemonItemにLeftPokemonItemを渡してる？ */}
                         { LeftPokemonItem ? <CardComponent currentPokemonItem={LeftPokemonItem}/> : <></> }
                     </div>
-                    <div className={contentsStyle.choiceEven} ></div>
+                    <div className={contentsStyle.choiceEven} onClick={handleChoice}>
+                        <p>どちらでもない</p>
+                    </div>
                     <div className={contentsStyle.choice} onClick={handleChoice}>
                         { RightPokemonItem ? <CardComponent currentPokemonItem={RightPokemonItem}/> : <></> }
                     </div>
