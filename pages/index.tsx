@@ -6,6 +6,7 @@ import indexStyle from './index.module.scss'
 
 import { Header } from '../components/Header'
 import { Contents } from '../components/Contents'
+import { Result } from '../components/Result'
 import { Footer } from '../components/Footer'
 
 
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
     <div className={indexStyle.outer}>
       <Header />
       <Contents />
+      <Result />
       <Footer />
     </div>    
   )

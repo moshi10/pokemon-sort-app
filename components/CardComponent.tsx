@@ -5,19 +5,19 @@ import cardComponentsStyle from "./cardComponent.module.scss"
 const colors = [
     {type:'fire', color:'#FDDFDF'},
     {type:'grass', color:'#DEFDE0'},
-    {type:'electric', color:'#FCF7DE'},
+    {type:'electric', color:'#fffacd'},
     {type:'water', color:'#DEF3FD'},
     {type:'ground', color:'#f4e7da'},
-    {type:'rock', color:'#d5d5d4'},
-    {type:'fairy', color:'#fceaff'},
-    {type:'poison', color:'#98d7a5'},
-    {type:'bug', color:'#f8d5a3'},
+    {type:'rock', color:'#e5d2c5'},
+    {type:'fairy', color:'#ffdef9'},
+    {type:'poison', color:'#f6c0f4'},
+    {type:'bug', color:'#d6e9ca'},
     {type:'dragon', color:'#97b3e6'},
-    {type:'psychic', color:'#eaeda1'},
+    {type:'psychic', color:'#ffcce5'},
     {type:'flying', color:'#F5F5F5'},
-    {type:'fighting', color:'#E6E0D4'},
+    {type:'fighting', color:'#ffddbc'},
     {type:'normal', color:'#F5F5F5'},
-    {type:'ghost', color:'#cc66ff'}
+    {type:'ghost', color:'#e5cce4'}
 ]
 
 // API呼び出し
@@ -48,7 +48,7 @@ export const CardComponent: React.FC<CardComponentsProps> = (P) => {
 
     return (
         <div className={cardComponentsStyle.cardContainer} style={{ backgroundColor: colorObject?.color }}>
-            <p>{P.currentPokemonItem.id}</p>
+            <p>No.{P.currentPokemonItem.id}</p>
             <div className={cardComponentsStyle.imgContainer}>
                 {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${P.currentPokemonItem.id}.png`} alt="" />}
             </div>

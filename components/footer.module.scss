@@ -1,6 +1,7 @@
 .horizonalLine{
-    border: 0.5px rgb(211, 211, 211) solid;
+    border-top: 0.5px rgb(211, 211, 211) solid;
     flex-grow: 1;
-    margin-left: 0;
-    margin-right: 0;
+    p{
+        text-align: center;
+    }
 }

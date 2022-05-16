@@ -3,9 +3,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-    width: auto;
-    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    padding: 10px 20px;
+    border: 1px solid;
+    box-shadow: 12px 12px rgb(228, 130, 102);
+    cursor: pointer;
+}
+
+.cardContainer:active {
+    position:relative;
+    top: 5px;
+    left: 5px;
+    box-shadow: 7px 7px rgb(228, 130, 102);
 }
 
 .imgContainer{
