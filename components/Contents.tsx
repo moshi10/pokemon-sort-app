@@ -14,10 +14,6 @@ const getPokemon = async (id:number):Promise<PokemonItem>=> {
     return data;
 }
 
-interface State {
-    result: boolean;
-}
-
 // ランダムな数字を返す
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
