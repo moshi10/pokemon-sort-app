@@ -1,4 +1,4 @@
-import { PokemonItem } from "../types/pokemonItem";
+import { PokemonItem } from "../../types/pokemonItem";
 import cardComponentsStyle from "./cardComponent.module.scss"
 
 // タイプ別の色を定義
@@ -20,14 +20,6 @@ const colors = [
     {type:'ghost', color:'#e5cce4'}
 ]
 
-// API呼び出し
-const getPokemon = async (id:number):Promise<PokemonItem>=> {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
-}
-
 // ランダムな数字を呼び出し
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
@@ -39,20 +31,19 @@ interface CardComponentsProps {
 }
 
 // 3 関数の名前にジェネリクスの中に定義したやつ書いてる
-// PropsをPに書き換えてみた！
-export const CardComponent: React.FC<CardComponentsProps> = (P) => {
+export const CardComponent: React.FC<CardComponentsProps> = (Props) => {
     // 今のポケモンのタイプ
-    const type = P.currentPokemonItem.types[0].type.name
+    const type = Props.currentPokemonItem.types[0].type.name
     // colorの中からtypeを選んで↑のtypeと比べて取り出す
     const colorObject = colors.find(v => v.type === type)
 
     return (
         <div className={cardComponentsStyle.cardContainer} style={{ backgroundColor: colorObject?.color }}>
-            <p>No.{P.currentPokemonItem.id}</p>
+            <p>No.{Props.currentPokemonItem.id}</p>
             <div className={cardComponentsStyle.imgContainer}>
-                {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${P.currentPokemonItem.id}.png`} alt="" />}
+                {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${Props.currentPokemonItem.id}.png`} alt="" />}
             </div>
-            <p>{P.currentPokemonItem.name}</p>
+            <p>{Props.currentPokemonItem.name}</p>
         </div>
 
 

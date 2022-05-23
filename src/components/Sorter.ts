@@ -14,6 +14,7 @@ interface PokemonDictionary {
 
 const items: PokemonDictionary = {};
 const _array: number[] = [1,2,3];
+const currentChallenge: string[] = [];
 
 for(let item of _array) {
     items[item] = {
@@ -21,6 +22,30 @@ for(let item of _array) {
         equal: [],
         greater: []
     }
+}
+
+const notExist = (item: number, dest: number) => {
+    return (
+        !(items[dest].equal.includes(item))
+    )
+
+}
+
+const addResult = (greater: string, less: string) => {
+    if (less === greater) { return }
+
+    // less側
+    
+}
+
+const sortArray = (arr: number[]): string[] =>{
+
+    let result: string[] = [];
+
+
+
+
+    return result
 }
 
 export function getItems() {

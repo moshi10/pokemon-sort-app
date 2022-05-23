@@ -8,14 +8,21 @@ import { Header } from '../components/Header'
 import { Contents } from '../components/Contents'
 import { Result } from '../components/Result'
 import { Footer } from '../components/Footer'
+import { useState } from 'react'
+
+
 
 
 const Home: NextPage = () => {
+  const [power, setPower] = useState(false);
   return (
     <div className={indexStyle.outer}>
       <Header />
-      <Contents />
-      <Result />
+      <div>
+                <div>{ power ? <Result /> : <Contents />}</div>
+                <button onClick={() => setPower(true)}>true result</button>
+                <button onClick={() => setPower(false)}>false contents(初期値)</button>
+      </div>
       <Footer />
     </div>    
   )
