@@ -20,11 +20,6 @@ const colors = [
     {type:'ghost', color:'#e5cce4'}
 ]
 
-// ランダムな数字を呼び出し
-function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-}
-
 // 1 ここで受け取るPropの型を定義するんだ？
 interface CardComponentsProps {
     currentPokemonItem: PokemonItem
