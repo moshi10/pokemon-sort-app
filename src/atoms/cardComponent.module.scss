@@ -1,0 +1,29 @@
+.cardContainer{
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid;
+    box-shadow: 12px 12px rgb(228, 130, 102);
+    cursor: pointer;
+}
+
+.cardContainer:active {
+    position:relative;
+    top: 5px;
+    left: 5px;
+    box-shadow: 7px 7px rgb(228, 130, 102);
+}
+
+.imgContainer{
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    img{
+        max-width: 90%;
+        margin-top: 20px;
+    }
+}

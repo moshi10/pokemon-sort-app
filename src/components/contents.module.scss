@@ -1,0 +1,99 @@
+$border1: 1px solid;
+
+.wrapper{
+    border: $border1;
+    margin: 50px auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    border: $border1;
+    margin: 30px;
+    width: 80%;
+    height: 20%;
+}
+
+.rule{
+    border: $border1;
+}
+
+.choiceEvenWrapper{
+    border: $border1;
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    flex-direction: column;
+}
+
+.choiceEven{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10%;
+    border: 1px solid;
+    box-shadow: 7px 7px rgb(228, 130, 102);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.choiceEven:active {
+    position:relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: 3px 3px rgb(228, 130, 102);
+}
+
+.choiceWrapper{
+    border: $border1;
+    display: flex;
+    max-width: 80%;
+    align-items: center;
+}
+
+.choice{
+    margin: 50px 20px;
+}
+
+.result{
+    border: $border1;
+    margin: 50px auto;
+    width: 800px;
+    // height: 300px;
+    display: flex;
+    align-items: center;
+}
+
+
+.testChoice:active {
+    position:relative;
+    top: 4px;
+    left: 4px;
+    box-shadow: 3px 3px rgb(228, 130, 102);
+}
+
+.testsWrapper{
+    border: $border1;
+    display: flex;
+    width: 80%;
+    height: 300px;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.testChoice{
+    margin: 50px 20px;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid;
+    box-shadow: 12px 12px rgb(228, 130, 102);
+    cursor: pointer;
+}
