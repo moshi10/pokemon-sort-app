@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { PokemonItem } from "../../types/pokemonItem";
 import { CardComponent } from "../atoms/CardComponent";
+import { FirstPageComponent } from "../atoms/FirstPageComponent";
 
 import contentsStyle from "./contents.module.scss"
 import wrapperStyle from "./wrapper.module.scss"
@@ -14,14 +15,6 @@ const getPokemonsfromAPI = async (id:number):Promise<PokemonItem>=> {
     return data;
 }
 
-const tests = [
-    {id:1, name:"フシギダネ"},
-    {id:2, name:"ヒトカゲ"},
-    {id:3, name:"ゼニガメ"},
-    {id:4, name:"ピカチュウ"},
-    {id:5, name:"ミュウ"}
-]
-
 interface Pokemon {
     id: number;
     name: string;
@@ -31,6 +24,18 @@ interface PokemonPair {
     left: PokemonItem;
     right: PokemonItem;      
 }
+
+// タイプと名前を置き換える
+const replaceJapanesePokemonName = (arr:PokemonItem[]) => {
+    
+        
+}
+
+const JapanesePokemonName = [
+    {id:1,}
+
+
+]
 
 const createSortData = (PokemonArray:PokemonItem[]) => {
     const pokePairArr:PokemonPair[] = []
@@ -63,9 +68,9 @@ export const Contents: React.FC = () => {
                 const pokemonData = await getPokemonsfromAPI(i);
                 PokeTempArr.push(pokemonData)
             }
-            // shuffle(PokeTempArr);
+
+            console.log(PokeTempArr)
             setPokemonDataArray(PokeTempArr)
-            // setPokemonItems(PokeTempArr)
             const tempPairArr= createSortData(PokeTempArr)
             const _tempPairArr = shuffle(tempPairArr)
             setPokemonPairArray(_tempPairArr)
@@ -79,12 +84,9 @@ export const Contents: React.FC = () => {
         setCount(count+1);
     }
     const handleClick = () => {
-        console.log()
-    }
-
-    const handleTestChoice = () => {
-        setCount(count+1)
-        console.log(createSortData(pokemonDataArray))
+        // setCount(count+1)
+        // console.log(createSortData(pokemonDataArray))
+        console.log(pokemonDataArray)
     }
 
     const shuffle = (arr:any[]) => {
@@ -99,6 +101,7 @@ export const Contents: React.FC = () => {
 
     return (
         <>
+             <FirstPageComponent />
             <div className={contentsStyle.wrapper}>
                 <div className={contentsStyle.rule}>
                     <p onClick={handleClick}>好きなポケモンをひたすら選んでね</p>
@@ -112,16 +115,6 @@ export const Contents: React.FC = () => {
                         <p>どちらでもない</p>
                     </div>
                 </div>
-                {/* <div className={contentsStyle.testsWrapper}>
-                    <div className={contentsStyle.testChoice} onClick={handleTestChoice}>
-                        { pokemonPairArray[count].left.id }
-                        { pokemonPairArray[count].left.name }
-                    </div>
-                    <div className={contentsStyle.testChoice} onClick={handleTestChoice}>
-                        { pokemonPairArray[count].right.id }
-                        { pokemonPairArray[count].right.name }
-                    </div>
-                </div> */}
                 <div className={contentsStyle.choiceWrapper}>
                     <div className={contentsStyle.choice} onClick={handleChoice} >
                         {/* 2 CardComponentのcurrentPokemonItemにLeftPokemonItemを渡してる？ */}
