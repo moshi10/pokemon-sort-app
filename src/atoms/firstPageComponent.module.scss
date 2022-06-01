@@ -1,0 +1,10 @@
+$border1: 1px solid;
+
+.wrapper{
+    border: $border1;
+    margin: 50px auto;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
