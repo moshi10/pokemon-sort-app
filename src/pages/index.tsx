@@ -10,9 +10,6 @@ import { Result } from '../components/Result'
 import { Footer } from '../components/Footer'
 import { useState } from 'react'
 
-
-
-
 const Home: NextPage = () => {
   const [power, setPower] = useState(false);
   return (

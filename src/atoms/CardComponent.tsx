@@ -26,19 +26,21 @@ interface CardComponentsProps {
 }
 
 // 3 関数の名前にジェネリクスの中に定義したやつ書いてる
-export const CardComponent: React.FC<CardComponentsProps> = (Props) => {
+export const CardComponent: React.FC<CardComponentsProps> = (props) => {
+    const { id, name, type_name,  } = props.currentPokemonItem;
     // 今のポケモンのタイプ
-    const type = Props.currentPokemonItem.type_name
+    // const type = props.currentPokemonItem.type_name
     // colorの中からtypeを選んで↑のtypeと比べて取り出す
-    const colorObject = colors.find(v => v.type === type)
+    const colorObject = colors.find(v => v.type === type_name)
+    console.log(name)
 
     return (
         <div className={cardComponentsStyle.cardContainer} style={{ backgroundColor: colorObject?.color }}>
-            <p>No.{Props.currentPokemonItem.id}</p>
+            <p>No.{props.currentPokemonItem.id}</p>
             <div className={cardComponentsStyle.imgContainer}>
-                {<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${Props.currentPokemonItem.id}.png`} alt="" />}
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} alt="" />
             </div>
-            <p>{Props.currentPokemonItem.name}</p>
+            <p>{name}</p>
         </div>
 
 
