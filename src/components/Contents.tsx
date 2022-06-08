@@ -17,6 +17,9 @@ interface PokemonPair {
     right: PokeItem;      
 }
 
+/** 
+ * @param {PokeItem[]} PokemonArray -excelで作ったjson
+ */
 const createSortData = (PokemonArray:PokeItem[]) => {    
     const pokePairArr:PokemonPair[] = []
     for (let i=0;i<PokemonArray.length-1;i++) {
@@ -30,7 +33,6 @@ const createSortData = (PokemonArray:PokeItem[]) => {
     return pokePairArr
 }
 
-
 const shuffle = (arr:any[]) => {
     let m = arr.length;
     while (m) {
@@ -41,8 +43,6 @@ const shuffle = (arr:any[]) => {
 };
 
 export const Contents: React.FC = () => {
-    // 状態を🌟
-    // const [pokemonDataArray, setPokemonDataArray] = useState<PokemonItem[]>([])
     const [count,setCount] = useState(0)
     const [pokemonPairArray,setPokemonPairArray] = useState<PokemonPair[]>([])
 

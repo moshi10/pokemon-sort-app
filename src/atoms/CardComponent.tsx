@@ -1,8 +1,7 @@
 import { PokeItem } from "../components/pokemon";
 import cardComponentsStyle from "./cardComponent.module.scss"
 
-// タイプ別の色を定義
-const colors = [
+const typeColors = [
     {type:'ほのお', color:'#FDDFDF'},
     {type:'くさ', color:'#DEFDE0'},
     {type:'でんき', color:'#fffacd'},
@@ -25,13 +24,18 @@ interface CardComponentsProps {
     currentPokemonItem: PokeItem
 }
 
-// 3 関数の名前にジェネリクスの中に定義したやつ書いてる
+/**
+ * カードコンポーネント
+ * 3 関数の名前、ジェネリクスの中に定義したやつ書いてる
+ * @param props  -contents.tsxからcurrentPokemonItem(PokeItem(jsonの型))が渡されてる
+ * @returns カードjsx
+ */
 export const CardComponent: React.FC<CardComponentsProps> = (props) => {
-    const { id, name, type_name,  } = props.currentPokemonItem;
+    const { id, name, type_name } = props.currentPokemonItem;
     // 今のポケモンのタイプ
     // const type = props.currentPokemonItem.type_name
     // colorの中からtypeを選んで↑のtypeと比べて取り出す
-    const colorObject = colors.find(v => v.type === type_name)
+    const colorObject = typeColors.find(v => v.type === type_name)
     console.log(name)
 
     return (
@@ -42,8 +46,5 @@ export const CardComponent: React.FC<CardComponentsProps> = (props) => {
             </div>
             <p>{name}</p>
         </div>
-
-
     )
-
 }

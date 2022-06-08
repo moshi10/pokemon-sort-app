@@ -26,7 +26,13 @@ const typeChecklists:string[] = [
     "かくとう",
     "ノーマル"
 ]
-// React.FCの後ろに付けるジェネリクスはPropsの型を定義する奴
+
+/**
+ * React.FCの後ろに付けるジェネリクスはPropsの型を定義する奴
+ * @param props checkboxの中身
+ * @const { id, checked, onChange, value } = props;
+ * @returns 
+ */
 const CheckBox:React.FC<CheckBoxProps> = (props) => {
     const { id, checked, onChange, value } = props;
     return(
@@ -41,7 +47,10 @@ const CheckBox:React.FC<CheckBoxProps> = (props) => {
     )
 }
 
-
+/**
+ * むー
+ * @returns 
+ */
 const CheckBoxList:React.FC = () => {
     const [checkedItems,setCheckedItems] = useState<{ [key:string] : boolean }>({})
     const [isBtnHide,setIsBtnHide] = useState(true)
@@ -70,9 +79,6 @@ const CheckBoxList:React.FC = () => {
             setIsBtnHide(true);
         }
     },[checkedItems])
-
-
-
     return(
         <form>
             {typeChecklists.map((item,index) => {
@@ -96,6 +102,10 @@ const CheckBoxList:React.FC = () => {
     )
 }
 
+/**
+ * CheckBoxListコンポーネントをimport
+ * @returns 
+ */
 export const FirstPageComponent:React.FC = () => {
     return(
         <>

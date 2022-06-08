@@ -19,12 +19,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "typedocOptions": {
-    "entryPoints": [
-      "src/index.ts"
-    ],
-    "out": "docs"
-  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

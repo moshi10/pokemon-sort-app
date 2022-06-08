@@ -1,6 +1,14 @@
 {
-    "entryPoints": ["./src/index.ts"],
-    "out": "doc",
+    "entryPoints": [
+        "src/components/Header.tsx",
+        "src/components/Contents.tsx",
+        "src/components/Result.tsx",
+        "src/components/Footer.tsx",
+
+        "src/atoms/CardComponent.tsx",
+        "src/atoms/FirstPageComponent.tsx"
+    ],
+    "out": "docs",
     "excludeExternals": true,
     "exclude": "test/*",
     "tsconfig": "tsconfig.json"
